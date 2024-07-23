@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Sacramento" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <title>Cat</title>
+</head>
+<body class="light-mode">
+    <header>
+        <div class="logo"><img src="sailor-moon-luna-cat-512x512-removebg-preview.png"></div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="page2.html">Cats</a>
+            <a href="index.html#sectionB">Contact</a>
+        </nav>
+        
+        <div class="toggle-add">
+          <img class="add" src="plus.png" alt="Ajouter une annonce">
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </header>
+    <div class="filters">
+        <select id="city">
+            <option value="">All</option>
+            <option value="Bruxelles">Bruxelles</option>
+            <option value="Brabant-flamand">Brabant-flamand</option>
+            <option value="Brabant-wallon">Brabant-wallon</option>
+            <option value="Halle-Vilvoorde">Halle-Vilvoorde</option>
+        </select>
+        <select id="sort">
+            <option value="none">Sort by</option>
+            <option value="age-asc">youngest to oldest</option>
+            <option value="age-desc">oldest to youngest</option>
+        </select>
+    </div>
+    <section id="cats-container" class="cat-container">
+        <!-- Cat cards will be displayed here via JavaScript -->
+    </section>
+    <div id="cat-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-cat-image" alt="Cat image">
+                </div>
+                <div class="modal-text">
+                    <h2 id="modal-cat-name"></h2>
+                    <p id="modal-cat-city"></p>
+                    <p>Vaccinated: <span id="modal-cat-vaccinated"></span></p>
+                    <p>Dewormed: <span id="modal-cat-dewormed"></span></p>
+                    <p>Antiparasitic: <span id="modal-cat-antiparasitic"></span></p>
+                    <p>Microchipped: <span id="modal-cat-chipped"></span></p>
+                    <p>Neutered/Spayed: <span id="modal-cat-sterilized"></span></p>
+                    <p>Clean: <span id="modal-cat-clean"></span></p>
+                    <p><span id="modal-cat-owner"></span></p>
+                    <p><span id="modal-cat-phone"></span></p>
+                    <button><a id="contact-link">Contact Owner</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="formulaire" class="formulaire" enctype ="multipart/form-data">
+        <div class="formulaire-content">
+            <span class="close">&times;</span>
+            <form method="POST" id="catForm" name="catForm">
+                <label for="ownerName">Owner Name</label>
+                <input type="text" id="ownerName" name="ownerName"  placeholder="Owner name" required>
+    
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="04xx xx xx xx" pattern="^04[0-9]{8}$" required>
+                
+                <label for="catName">Cat Name</label>
+                <input type="text" id="catName" name="catName" placeholder="cat name" required maxlength="200" pattern="^[a-zA-Z\s]+$">
+                
+                <div>
+                    <label for="male">Sex</label>
+                    <input type="radio" id="male" name="sex" value="male" required>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="sex" value="female" required>
+                    <label for="female">Female</label>
+                </div>
+                
+                <label for="catRace">Race</label>
+                <input type="text" id="catRace" name="catRace" placeholder="cat race" required maxlength="200" >
+                
+                <label for="birthdate">Cat's Birthdate</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+                
+                <div class="city">
+                    <label for="cityForm">City</label>
+                    <select name="cityForm" id="cityForm" required>
+                        <option selected hidden value="">Choose a city</option>
+                        <optgroup label="city">
+                            <option value="Bruxelles">Bruxelles</option>
+                            <option value="Brabant-flamand">Brabant-flamand</option>
+                            <option value="Brabant-wallon">Brabant-wallon</option>
+                            <option value="Halle-Vilvoorde">Halle-Vilvoorde</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <label for="catPhoto">Add Cat's Picture</label>
+                <input type="file" id="catPhoto" name="catPhoto" accept="image/*">
+                
+                <label>Vaccinated?</label>
+                <div>
+                    <input type="radio" id="vaccinated" name="vaccinated" value="true">
+                    <label for="vaccinated">✅</label>
+                    <input type="radio" id="novaccinated" name="vaccinated" value="false">
+                    <label for="novaccinated">✖️</label>
+                    
+                </div>
+                
+                <label>Dewormed?</label>
+                <div>
+                    <input type="radio" id="dewormed" name="dewormed" value="true">
+                    <label for="dewormed">✅</label>
+                    <input type="radio" id="nodewormed" name="dewormed" value="false">
+                    <label for="nodewormed">✖️</label>
+                  
+                </div>
+                
+                <label>Antiparasitic?</label>
+                <div>
+                    <input type="radio" id="antiparasitic" name="antiparasitic" value="true">
+                    <label for="antiparasitic">✅</label>
+                    <input type="radio" id="noantiparasitic" name="antiparasitic" value="false">
+                    <label for="noantiparasitic">✖️</label>
+                    
+                </div>
+                
+                <label>Chipped?</label>
+                <div>
+                    <input type="radio" id="chipped" name="chipped" value="true">
+                    <label for="chipped">✅</label>
+                    <input type="radio" id="nochipped" name="chipped" value="false">
+                    <label for="nochipped">✖️</label>
+                  
+                </div>
+                
+                <label>Sterilized?</label>
+                <div>
+                    <input type="radio" id="sterilized" name="sterilized" value="true">
+                    <label for="sterilized">✅</label>
+                    <input type="radio" id="nosterilized" name="sterilized" value="false">
+                    <label for="nosterilized">✖️</label>
+                    
+                </div>
+                
+                <label>Clean?</label>
+                <div>
+                    <input type="radio" id="clean" name="clean" value="true">
+                    <label for="clean">✅</label>
+                    <input type="radio" id="noclean" name="clean" value="false">
+                    <label for="noclean">✖️</label>
+                  
+                </div>
+                
+                <div class="input-field">
+                    <label for="cat-description">Description</label>
+                    <textarea id="cat-description" name="catDescription" placeholder="add a short description" maxlength="500" rows="5" spellcheck></textarea>
+                </div>
+                
+                <div class="check-field">
+                    <input id="noSale" name="noSale" type="checkbox" required>
+                    <label for="noSale"><span style="color: red; background-color: yellow;">⚠️ Cats are not for sale!</span></label>
+                </div>
+                
+                <button type="submit">submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="backtotop"><button onclick="topFunction()" id="myBtn"><img src="arrow.png"></button></div>
+    
+    <div class="footer-trigger">
+        <p>high five!</p>
+        <img src="a50e06f21e5c10260d74c9e8f7b4f9a4.gif" alt="Hover to show footer">
+    </div>
+    
+    <footer class="footer">
+        <ul class="social-icon">
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-twitter"></ion-icon>
+            </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-linkedin"></ion-icon>
+            </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a></li>
+        </ul>
+        <p class="footer p"> © 2024 sounyâ | Made with love ❤️ </p>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="cats.js"></script>
+    <script src="toggle.js"></script>
+</body>
+</html>
+
