@@ -7,7 +7,7 @@ const CATS = [
     { name: "Milo", image: "Milo.jpg", sex: "male", race: "scottish", city: "Bruxelles", idnumber: 947882465, birthdate: "2023-02-14", vaccinated: true, dewormed: false, antiparasitic: true, chipped: false, sterilized: null, clean: true, ownerName: "Fiona", phoneNumber: "0498123461"},
     { name: "Moon", image: "moon.jpeg", sex: "male", race: "bengal", city: "Halle-Vilvoorde", idnumber: 947427951, birthdate: "2023-01-30", vaccinated: null, dewormed: true, antiparasitic: false, chipped: true, sterilized: true, clean: false, ownerName: "George", phoneNumber: "0498123462"},
     { name: "Natsou", image: "Natsou.jpeg", sex: "female", race: "alley-cat", city: "Brabant-flamand", idnumber: null, birthdate: "2023-03-10", vaccinated: false, dewormed: null, antiparasitic: true, chipped: false, sterilized: false, clean: true, ownerName: "Hannah", phoneNumber: "0498123463"},
-    { name: "Iris", image: "iris.jpeg", sex: "female", race: "russian", city: "Bruxelles", idnumber: 947336510, birthdate: "2023-04-20", vaccinated: true, dewormed: false, antiparasitic: null, chipped: true, sterilized: true, clean: false, ownerName: "Ian", phoneNumber: "0498123464"},
+    { name: "Iris", image: "Iris.jpeg", sex: "female", race: "russian", city: "Bruxelles", idnumber: 947336510, birthdate: "2023-04-20", vaccinated: true, dewormed: false, antiparasitic: null, chipped: true, sterilized: true, clean: false, ownerName: "Ian", phoneNumber: "0498123464"},
 ];
 
 function createCatCard(cat) {
